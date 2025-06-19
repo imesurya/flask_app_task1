@@ -1,0 +1,12 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: cloud-run-ml-app-prod
+spec:
+  template:
+    spec:
+      containers:
+      - image: app
+        env:
+        - name: VERSION
+          value: "$TAG"
