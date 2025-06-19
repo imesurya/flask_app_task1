@@ -3,7 +3,7 @@ steps:
     args:
       [
         'build',
-        '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/rutuja-zingrut-ml-app/cloud-run-app:$SHORT_SHA',
+        '-t', 'us-central1-docker.pkg.dev/faa-gcp-training-14-kfa-0808/my-flask-app-surya/cloud-run-app:$SHORT_SHA',
         '.'
       ]
     id: 'Build Docker image'
@@ -12,7 +12,7 @@ steps:
     args:
       [
         'push',
-        'us-central1-docker.pkg.dev/$PROJECT_ID/rutuja-zingrut-ml-app/cloud-run-app:$SHORT_SHA'
+        'us-central1-docker.pkg.dev/faa-gcp-training-14-kfa-0808/my-flask-app-surya/cloud-run-app:$SHORT_SHA'
       ]
     id: 'Push to Artifact Registry'
 
@@ -22,7 +22,7 @@ steps:
       [
         'run', 'deploy',
         'cloud-run-app',
-        '--image', 'us-central1-docker.pkg.dev/$PROJECT_ID/rutuja-zingrut-ml-app/cloud-run-app:$SHORT_SHA',
+        '--image', 'us-central1-docker.pkg.dev/faa-gcp-training-14-kfa-0808/my-flask-app-surya/cloud-run-app:$SHORT_SHA',
         '--region', 'us-central1',
         '--platform', 'managed',
         '--allow-unauthenticated',
