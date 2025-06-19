@@ -1,0 +1,19 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: cloud-run-ml-app-dev
+spec:
+  template:
+    spec:
+      containers:
+      - image: app
+        env:
+        - name: VERSION
+          value: "$TAG"
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
